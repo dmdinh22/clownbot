@@ -54,7 +54,7 @@ function handleMessage(message) {
     } else if (message.includes(' help')) {
         showHelp();
     } else {
-        randomJoke();
+        sorry();
     }
 }
 
@@ -128,6 +128,18 @@ function showHelp() {
     bot.postMessageToChannel(
         'random',
         'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
+        params
+    );
+}
+
+function sorry() {
+    const params = {
+        icon_emoji: ':cry:'
+    };
+
+    bot.postMessageToChannel(
+        'random',
+        'Sorry, that joke is not yet supported...',
         params
     );
 }

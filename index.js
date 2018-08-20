@@ -47,6 +47,8 @@ function handleMessage(message) {
     } else if (message.includes(' yomama') || message.includes(' yo mama') ||
     message.includes(' yomomma') || message.includes(' yo momma')) {
         yoMamaJoke();
+    } else if (message.includes(' random')) {
+        randomJoke();
     }
 }
 
@@ -76,4 +78,14 @@ function yoMamaJoke() {
 
         bot.postMessageToChannel('general', `Yo Mama: ${joke}`, params);
     });
+}
+
+// tell random joke
+function randomJoke() {
+    const rand = Math.floor(Math.random() * 2) + 1;
+    if (rand === 1) {
+        chuckJoke();
+    } else if (rand === 2) {
+        yoMamaJoke();
+    }
 }

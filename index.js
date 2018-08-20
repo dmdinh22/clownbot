@@ -18,3 +18,8 @@ bot.on('start', () => {
         params
     );
 });
+
+// error handler
+bot.on('error', err =>
+    console.log(err)
+);

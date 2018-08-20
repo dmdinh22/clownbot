@@ -53,6 +53,8 @@ function handleMessage(message) {
         randomJoke();
     } else if (message.includes(' help')) {
         showHelp();
+    } else {
+        randomJoke();
     }
 }
 

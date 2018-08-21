@@ -18,7 +18,6 @@ bot.on('start', () => {
     //     params
     // );
 
-    // for testing
     bot.postMessageToUser('dmdinh', 'herro world', params);
 });
 
@@ -35,7 +34,7 @@ bot.on('message', data => {
 });
 
 // Respons to Data
-function handleMessage(message) {
+const handleMessage = message => {
     if (message.includes(' chucknorris') || message.includes(' chuck norris')) {
         chuckJoke();
     } else if (
@@ -63,10 +62,10 @@ function handleMessage(message) {
     ) {
         link();
     }
-}
+};
 
 // tell chuck norris joke
-function chuckJoke() {
+const chuckJoke = () => {
     // hit chuck norris api endpoint
     axios.get('http://api.icndb.com/jokes/random').then(res => {
         const joke = res.data.value.joke;
@@ -79,17 +78,12 @@ function chuckJoke() {
         //bot.postMessageToChannel('random', `Chuck Norris: ${joke}`, params);
 
         // for testing
-        bot.postMessageToChannel(
-            'garretlamb, brianw',
-            `Chuck Norris: ${joke}`,
-            params
-        );
-        //bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
+        bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
     });
-}
+};
 
 // tell yo mama joke
-function yoMamaJoke() {
+const yoMamaJoke = () => {
     axios.get('http://api.yomomma.info').then(res => {
         const joke = res.data.joke;
 
@@ -100,17 +94,12 @@ function yoMamaJoke() {
         //bot.postMessageToChannel('random', `Yo Mama: ${joke}`, params);
 
         // for testing
-        bot.postMessageToChannel(
-            'garretlamb, brianw',
-            `Yo Mama: ${joke}`,
-            params
-        );
-        //bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
+        bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
     });
-}
+};
 
 // tell dad joke
-function dadJoke() {
+const dadJoke = () => {
     axios.get('https://icanhazdadjoke.com/slack').then(res => {
         const joke = res.data.attachments[0].text;
 
@@ -123,10 +112,10 @@ function dadJoke() {
         // for testing
         bot.postMessageToUser('dmdinh', `Dad Joke: ${joke}`, params);
     });
-}
+};
 
 // tell random joke
-function randomJoke() {
+const randomJoke = () => {
     const rand = Math.floor(Math.random() * 3) + 1;
     if (rand === 1) {
         chuckJoke();
@@ -135,9 +124,9 @@ function randomJoke() {
     } else if (rand === 3) {
         dadJoke();
     }
-}
+};
 
-function showHelp() {
+const showHelp = () => {
     const params = {
         icon_emoji: ':question:'
     };
@@ -149,20 +138,14 @@ function showHelp() {
     // );
 
     // for testing
-    bot.postMessageToChannel(
-        'garretlamb, brianw',
+    bot.postMessageToUser(
+        'dmdinh',
         'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
         params
     );
+};
 
-    // bot.postMessageToUser(
-    //     'dmdinh',
-    //     'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
-    //     params
-    // );
-}
-
-function sorry() {
+const sorry = () => {
     const params = {
         icon_emoji: ':cry:'
     };
@@ -174,19 +157,14 @@ function sorry() {
     // );
 
     // for testing
-    bot.postMessageToChannel(
-        'garretlamb, brianw',
+    bot.postMessageToUser(
+        'dmdinh',
         'Sorry, that joke is not yet supported...',
         params
     );
-    // bot.postMessageToUser(
-    //     'dmdinh',
-    //     'Sorry, that joke is not yet supported...',
-    //     params
-    // );
-}
+};
 
-function link() {
+const link = () => {
     const params = {
         icon_emoji: ':cry:'
     };
@@ -198,10 +176,5 @@ function link() {
     // );
 
     // for testing
-    bot.postMessageToChannel(
-        'garretlamb, brianw',
-        'Fuck you :middle_finger:',
-        params
-    );
-    //bot.postMessageToUser('dmdinh', 'Link made me do it... :bomb:', params);
-}
+    bot.postMessageToUser('dmdinh', 'Link made me do it... :bomb:', params);
+};

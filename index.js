@@ -12,24 +12,18 @@ bot.on('start', () => {
         icon_emoji: ':joy:'
     };
 
-    bot.postMessageToChannel(
-        'random',
-        'Lighten up your day with @jokebot!',
-        params
-    );
+    // bot.postMessageToChannel(
+    //     'random',
+    //     '@linknlog made me do it',
+    //     params
+    // );
 
     // for testing
-    // bot.postMessageToUser(
-    //   'dmdinh',
-    //   'herro world',
-    //   params
-    // );
+    bot.postMessageToUser('dmdinh', 'herro world', params);
 });
 
 // error handler
-bot.on('error', err =>
-    console.log(err)
-);
+bot.on('error', err => console.log(err));
 
 // message handler
 bot.on('message', data => {
@@ -44,8 +38,12 @@ bot.on('message', data => {
 function handleMessage(message) {
     if (message.includes(' chucknorris') || message.includes(' chuck norris')) {
         chuckJoke();
-    } else if (message.includes(' yomama') || message.includes(' yo mama') ||
-    message.includes(' yomomma') || message.includes(' yo momma')) {
+    } else if (
+        message.includes(' yomama') ||
+        message.includes(' yo mama') ||
+        message.includes(' yomomma') ||
+        message.includes(' yo momma')
+    ) {
         yoMamaJoke();
     } else if (message.includes(' dadjoke') | message.includes(' dadjokes')) {
         dadJoke();
@@ -53,7 +51,10 @@ function handleMessage(message) {
         randomJoke();
     } else if (message.includes(' help')) {
         showHelp();
-    } else {
+    } else if (
+        message.includes(' knockknock') ||
+        message.includes(' knock knock')
+    ) {
         sorry();
     }
 }
@@ -69,10 +70,10 @@ function chuckJoke() {
         };
 
         // send to channel
-        bot.postMessageToChannel('random', `Chuck Norris: ${joke}`, params);
+        //bot.postMessageToChannel('random', `Chuck Norris: ${joke}`, params);
 
-    // for testing
-    //bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
+        // for testing
+        bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
     });
 }
 
@@ -85,10 +86,10 @@ function yoMamaJoke() {
             icon_emoji: ':laughing:'
         };
 
-        bot.postMessageToChannel('random', `Yo Mama: ${joke}`, params);
+        //bot.postMessageToChannel('random', `Yo Mama: ${joke}`, params);
 
-    // for testing
-    //bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
+        // for testing
+        bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
     });
 }
 
@@ -101,10 +102,10 @@ function dadJoke() {
             icon_emoji: ':laughing:'
         };
 
-        bot.postMessageToChannel('random', `Dad Joke: ${joke}`, params);
+        //bot.postMessageToChannel('random', `Dad Joke: ${joke}`, params);
 
-    // for testing
-    //bot.postMessageToUser('dmdinh', `Dad Joke: ${joke}`, params);
+        // for testing
+        bot.postMessageToUser('dmdinh', `Dad Joke: ${joke}`, params);
     });
 }
 
@@ -125,8 +126,15 @@ function showHelp() {
         icon_emoji: ':question:'
     };
 
-    bot.postMessageToChannel(
-        'random',
+    // bot.postMessageToChannel(
+    //     'random',
+    //     'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
+    //     params
+    // );
+
+    // for testing
+    bot.postMessageToUser(
+        'dmdinh',
         'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
         params
     );
@@ -137,8 +145,15 @@ function sorry() {
         icon_emoji: ':cry:'
     };
 
-    bot.postMessageToChannel(
-        'random',
+    // bot.postMessageToChannel(
+    //     'random',
+    //     'Sorry, that joke is not yet supported...',
+    //     params
+    // );
+
+    // for testing
+    bot.postMessageToUser(
+        'dmdinh',
         'Sorry, that joke is not yet supported...',
         params
     );

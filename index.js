@@ -56,6 +56,12 @@ function handleMessage(message) {
         message.includes(' knock knock')
     ) {
         sorry();
+    } else if (
+        message.includes(' fuck') ||
+        message.includes(' DDOS') ||
+        message.includes(' ddos')
+    ) {
+        link();
     }
 }
 
@@ -73,7 +79,12 @@ function chuckJoke() {
         //bot.postMessageToChannel('random', `Chuck Norris: ${joke}`, params);
 
         // for testing
-        bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
+        bot.postMessageToChannel(
+            'garretlamb, brianw',
+            `Chuck Norris: ${joke}`,
+            params
+        );
+        //bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
     });
 }
 
@@ -89,7 +100,12 @@ function yoMamaJoke() {
         //bot.postMessageToChannel('random', `Yo Mama: ${joke}`, params);
 
         // for testing
-        bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
+        bot.postMessageToChannel(
+            'garretlamb, brianw',
+            `Yo Mama: ${joke}`,
+            params
+        );
+        //bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
     });
 }
 
@@ -133,11 +149,17 @@ function showHelp() {
     // );
 
     // for testing
-    bot.postMessageToUser(
-        'dmdinh',
+    bot.postMessageToChannel(
+        'garretlamb, brianw',
         'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
         params
     );
+
+    // bot.postMessageToUser(
+    //     'dmdinh',
+    //     'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
+    //     params
+    // );
 }
 
 function sorry() {
@@ -152,9 +174,34 @@ function sorry() {
     // );
 
     // for testing
-    bot.postMessageToUser(
-        'dmdinh',
+    bot.postMessageToChannel(
+        'garretlamb, brianw',
         'Sorry, that joke is not yet supported...',
         params
     );
+    // bot.postMessageToUser(
+    //     'dmdinh',
+    //     'Sorry, that joke is not yet supported...',
+    //     params
+    // );
+}
+
+function link() {
+    const params = {
+        icon_emoji: ':cry:'
+    };
+
+    // bot.postMessageToChannel(
+    //     'random',
+    //     'Sorry, that joke is not yet supported...',
+    //     params
+    // );
+
+    // for testing
+    bot.postMessageToChannel(
+        'garretlamb, brianw',
+        'Fuck you :middle_finger:',
+        params
+    );
+    //bot.postMessageToUser('dmdinh', 'Link made me do it... :bomb:', params);
 }

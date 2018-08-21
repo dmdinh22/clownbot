@@ -18,6 +18,7 @@ bot.on('start', () => {
     //     params
     // );
 
+    // for testing
     bot.postMessageToUser('dmdinh', 'herro world', params);
 });
 
@@ -34,7 +35,7 @@ bot.on('message', data => {
 });
 
 // Respons to Data
-const handleMessage = message => {
+function handleMessage(message) {
     if (message.includes(' chucknorris') || message.includes(' chuck norris')) {
         chuckJoke();
     } else if (
@@ -62,10 +63,10 @@ const handleMessage = message => {
     ) {
         link();
     }
-};
+}
 
 // tell chuck norris joke
-const chuckJoke = () => {
+function chuckJoke() {
     // hit chuck norris api endpoint
     axios.get('http://api.icndb.com/jokes/random').then(res => {
         const joke = res.data.value.joke;
@@ -80,10 +81,10 @@ const chuckJoke = () => {
         // for testing
         bot.postMessageToUser('dmdinh', `Chuck Norris: ${joke}`, params);
     });
-};
+}
 
 // tell yo mama joke
-const yoMamaJoke = () => {
+function yoMamaJoke() {
     axios.get('http://api.yomomma.info').then(res => {
         const joke = res.data.joke;
 
@@ -96,10 +97,10 @@ const yoMamaJoke = () => {
         // for testing
         bot.postMessageToUser('dmdinh', `Yo Mama: ${joke}`, params);
     });
-};
+}
 
 // tell dad joke
-const dadJoke = () => {
+function dadJoke() {
     axios.get('https://icanhazdadjoke.com/slack').then(res => {
         const joke = res.data.attachments[0].text;
 
@@ -112,10 +113,10 @@ const dadJoke = () => {
         // for testing
         bot.postMessageToUser('dmdinh', `Dad Joke: ${joke}`, params);
     });
-};
+}
 
 // tell random joke
-const randomJoke = () => {
+function randomJoke() {
     const rand = Math.floor(Math.random() * 3) + 1;
     if (rand === 1) {
         chuckJoke();
@@ -124,9 +125,9 @@ const randomJoke = () => {
     } else if (rand === 3) {
         dadJoke();
     }
-};
+}
 
-const showHelp = () => {
+function showHelp() {
     const params = {
         icon_emoji: ':question:'
     };
@@ -143,9 +144,9 @@ const showHelp = () => {
         'Type @jokebot with either \'chucknorris\', \'dadjoke\', \'yomama\' or \'random\' to get a joke',
         params
     );
-};
+}
 
-const sorry = () => {
+function sorry() {
     const params = {
         icon_emoji: ':cry:'
     };
@@ -162,9 +163,9 @@ const sorry = () => {
         'Sorry, that joke is not yet supported...',
         params
     );
-};
+}
 
-const link = () => {
+function link() {
     const params = {
         icon_emoji: ':cry:'
     };
@@ -177,4 +178,4 @@ const link = () => {
 
     // for testing
     bot.postMessageToUser('dmdinh', 'Link made me do it... :bomb:', params);
-};
+}
